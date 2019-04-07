@@ -1,0 +1,36 @@
+<marquee class="hint">Welcome to Westminster Library, All Items in Library!</marquee>
+<table class="table table-hover">
+    <tr>
+      <th class="head" scope="col">Title</th>
+      <th class="head" scope="col">ISBN Number</th>
+      <th class="head" scope="col">Sector</th>
+      <th class="head" scope="col">Published Date</th>
+      <th class="head" scope="col">Type</th>
+    </tr>
+  <tbody>
+    <tr *ngFor="let item of itemsList">
+        <td *ngIf="item.reader != ''" class="notAvailable">{{item.title}}</td>
+        <td *ngIf="item.reader == ''" class="available">{{item.title}}</td>
+        <td *ngIf="item.reader != ''" class="notAvailable">{{item.isbn}}</td>
+        <td *ngIf="item.reader == ''" class="available">{{item.isbn}}</td>
+        <td *ngIf="item.reader != ''" class="notAvailable">{{item.sector}}</td>
+        <td *ngIf="item.reader == ''" class="available">{{item.sector}}</td>
+        <td *ngIf="item.reader != ''" class="notAvailable">{{item.published_date}}</td>
+        <td *ngIf="item.reader == ''" class="available">{{item.published_date}}</td>
+        <td *ngIf="item.reader != ''" class="notAvailable">Book</td>
+        <td *ngIf="item.reader == ''" class="available">Book</td>
+    </tr>
+    <tr *ngFor="let dvd of dvdsList">
+        <td *ngIf="dvd.reader != ''" class="notAvailable">{{dvd.title}}</td>
+        <td *ngIf="dvd.reader == ''" class="available">{{dvd.title}}</td>
+        <td *ngIf="dvd.reader != ''" class="notAvailable">{{dvd.isbn}}</td>
+        <td *ngIf="dvd.reader == ''" class="available">{{dvd.isbn}}</td>
+        <td *ngIf="dvd.reader != ''" class="notAvailable">{{dvd.sector}}</td>
+        <td *ngIf="dvd.reader == ''" class="available">{{dvd.sector}}</td>
+        <td *ngIf="dvd.reader != ''" class="notAvailable">{{dvd.published_date}}</td>
+        <td *ngIf="dvd.reader == ''" class="available">{{dvd.published_date}}</td>
+        <td *ngIf="dvd.reader != ''" class="notAvailable">DVD</td>
+        <td *ngIf="dvd.reader == ''" class="available">DVD</td>
+    </tr>
+  </tbody>
+</table>

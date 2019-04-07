@@ -1,0 +1,24 @@
+<marquee class="hint">Welcome to Westminster Library, Report of Library!</marquee>
+
+<table>
+
+    <table class="table table-hover">
+            <tr>
+                <th class="head" scope="col">Reader Name</th>
+                <th class="head" scope="col">ISBN Number</th>
+                <th class="head" scope="col">Borrowed Date</th>
+                <th class="head" scope="col">Borrowed Time</th>
+                <th class="head" scope="col">Due</th>
+            </tr>
+        <tbody>
+            <tr *ngFor="let report of generateReport">
+                <td>{{report.readerName}}</td>
+                <td>{{report.isbn}}</td>
+                <td>{{report.date}}</td>
+                <td>{{report.time}}</td>
+                <td>£ {{report.due}}</td>
+
+
+            </tr>
+        </tbody>
+    </table>

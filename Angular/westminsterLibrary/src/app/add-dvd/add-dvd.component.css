@@ -1,0 +1,50 @@
+.btn-secondary{
+    background-color:#77002b !important;
+    margin-left: 1120px;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-color: white;
+}
+
+.addDVDForm{
+    margin-top: 100px;
+}
+.btn-primary{
+    background-color:#77002b !important;
+    margin-left: 1225px;
+    border-color: white;
+    margin-top: 20px;
+
+}
+.form-group{
+    margin-top: 10px;   
+    margin-left: 170px !important;
+    width: 75% !important; 
+}
+.form-row{
+   margin-top: 10px;
+    margin-left: 170px !important;
+    width: 75% !important;
+     
+}
+
+.isbn{
+    margin-left: 170px !important;
+    width: 75% !important;
+}
+
+.space{
+    margin-left: 1300px;
+    color: #77002b;
+}
+
+
+.hint{
+    color: #77002b;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}

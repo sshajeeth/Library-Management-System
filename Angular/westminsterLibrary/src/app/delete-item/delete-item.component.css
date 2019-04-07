@@ -1,0 +1,20 @@
+.btn{
+    background-color:#77002b !important;
+    margin-left: 1210px;
+    border-color: white;
+    margin-top: 20px;
+
+}
+
+.form-row{
+    margin-top: 50px;
+     margin-left: 170px !important;
+     width: 75% !important;
+      
+ }
+ 
+.hint{
+    color: #77002b;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}

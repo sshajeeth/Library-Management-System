@@ -1,0 +1,97 @@
+<marquee class="hint">Welcome to Westminster Library, Add a DVD!</marquee>
+<div class="isbn">
+    <label>ISBN Number</label>
+    <input type="text" pattern="(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$"
+        required class="form-control" #iSBN="ngModel" [class.is-invalid]="iSBN.invalid && iSBN.touched" class="form-control"
+        name="iSBNText" [(ngModel)]="dvdDetails.isbn" placeholder="Enter ISBN Number Here">
+    <div *ngIf="iSBN.errors && (iSBN.valid ||  iSBN.touched)">
+        <small class="text-danger" *ngIf="iSBN.errors.required">ISBN Number is Required</small>
+        <small class="text-danger" *ngIf="iSBN.errors.pattern">Invalid ISBN Number</small>
+    </div>
+</div>
+<button type="button" [disabled]="iSBN.invalid" class="btn btn-secondary btn-lg" (click)="checkDVDAvailablity()"
+    data-toggle="modal" data-target="#myModal">Check DVD Availablity</button>
+
+
+
+
+<div class="addDVDForm">
+    <form #addDVD="ngForm" (ngSubmit)="onSubmit()" *ngIf="addDVDForm()">
+        <h5 class="space">Space Remaining: {{ dvdSpace }}</h5>
+        <div class="form-row">
+            <div class="col">
+                <label>Title</label>
+                <input type="text" required class="form-control" #title="ngModel" [class.is-invalid]="title.invalid && title.touched"
+                    name="titleText" [(ngModel)]="dvdDetails.title" placeholder="Enter Title Here">
+                <small class="text-danger" [class.d-none]="title.valid || title.untouched">*Title is Required</small>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+
+
+            <div class="col">
+                <label>Producer</label>
+                <input type="text" required class="form-control" #producer="ngModel" [class.is-invalid]="producer.invalid && producer.touched"
+                    class="form-control" name="producerText" [(ngModel)]="dvdDetails.producer" placeholder="Enter Producer Here">
+                <small class="text-danger" [class.d-none]="producer.valid || producer.untouched">*Producer is
+                    Required</small>
+            </div>
+
+            <div class="col">
+                <label>Actor</label>
+                <input type="text" required class="form-control" #actor="ngModel" [class.is-invalid]="actor.invalid && actor.touched"
+                    class="form-control" name="actorText" [(ngModel)]="dvdDetails.actor" placeholder="Enter Actor Here">
+                <small class="text-danger" [class.d-none]="actor.valid || actor.untouched">*Actor is
+                    Required</small>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+
+
+            <div class="col">
+                <label>Published Date</label>
+                <input type="date" required class="form-control" #published_date="ngModel" [class.is-invalid]="published_date.invalid && published_date.touched"
+                    class="form-control" name="published_dateText" [(ngModel)]="dvdDetails.published_date">
+                <small class="text-danger" [class.d-none]="published_date.valid || published_date.untouched">*Published
+                    Date is
+                    Required</small>
+            </div>
+
+            <div class="col">
+                <label>Sector</label>
+                <select class="form-control" required #sector="ngModel" [class.is-invalid]="sectorHasError && sector.touched"
+                    (blur)="validateSector(sector.value)" (change)="validateSector(sector.value)" name="sectorMenu"
+                    [(ngModel)]="dvdDetails.sector">
+                    <option disabled selected value value="defaultSector">Choose a Sector</option>
+                    <option *ngFor="let sector of sectors">{{ sector }} </option>
+                </select>
+                <small class="text-danger" [class.d-none]="!sectorHasError ||sector.untouched">*Please Choose
+                    Suitable
+                    Sector
+                </small>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label>Subtitles</label>
+                <input type="text" required class="form-control" #subtitles="ngModel" [class.is-invalid]="subtitles.invalid && subtitles.touched"
+                    class="form-control" name="subtitlesText" [(ngModel)]="dvdDetails.subtitles" placeholder="Enter Subtitles Here">
+                <small class="text-danger" [class.d-none]="subtitles.valid || subtitles.untouched">*Subtitles is
+                    Required</small>
+            </div>
+
+            <div class="col">
+                <label>Languages</label>
+                <input type="text" required class="form-control" #languages="ngModel" [class.is-invalid]="languages.invalid && languages.touched"
+                    class="form-control" name="languagesText" [(ngModel)]="dvdDetails.languages" placeholder="Enter Languages Here">
+                <small class="text-danger" [class.d-none]="languages.valid || languages.untouched">*Language is
+                    Required</small>
+            </div>
+        </div>
+        <button [disabled]="addDVD.form.invalid" class="btn btn-primary" type="submit">Add DVD</button>
+    </form>
+</div>

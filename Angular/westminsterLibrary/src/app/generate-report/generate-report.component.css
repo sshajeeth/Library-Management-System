@@ -1,0 +1,21 @@
+.report{
+    margin-top: 10px;
+    margin-left: 15px;
+    color: #77002b ;
+}
+
+.table{
+    margin-left: 150px;
+    width: 1200px;
+}
+
+.hint{
+    color: #77002b;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.head{
+    background-color:#77002b; 
+    border-bottom: 5px solid gainsboro; 
+    color: white 
+}

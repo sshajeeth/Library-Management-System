@@ -1,0 +1,25 @@
+.head{
+    background-color:#77002b; 
+    border-bottom: 5px solid gainsboro; 
+    color: white 
+}
+.table{
+    margin-left: 150px;
+    width: 1200px;
+}
+
+.hint{
+    color: #77002b;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.notAvailable{
+    background-color: #e03c3c;
+    border-bottom: 5px solid gainsboro; 
+}
+
+.available{
+    background-color: #00b265;
+    border-bottom: 5px solid gainsboro; 
+}

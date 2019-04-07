@@ -1,0 +1,37 @@
+.btn-primary{
+    background-color:#77002b !important;
+    margin-left: 1020px;
+    border-color: white;
+    margin-top: 20px;
+
+}
+
+.form-row{
+    margin-top: 50px;
+     margin-left: 170px !important;
+     width: 75% !important;
+      
+ }
+ .btn-secondary{
+    background-color:#77002b !important;
+    margin-left: 1160px;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-color: white;
+}
+
+.fullName{
+    margin-top: 50px;
+     margin-left: 170px !important;
+     width: 75% !important;
+}
+
+.hint{
+    color: #77002b;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}

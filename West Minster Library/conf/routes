@@ -1,0 +1,39 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET         /                                   controllers.HomeController.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                       controllers.Assets.versioned(path="/public", file: Asset)
+
+
+
+GET         /checkAvailablity/:isbn             controllers.HomeController.checkAvailablity(isbn:String)
+GET         /bookRemain                         controllers.HomeController.bookRemain
+POST        /books                              controllers.HomeController.addBook
+
+GET         /checkDVDAvailablity/:isbn          controllers.HomeController.checkDVDAvailablity(isbn:String)
+GET         /dvdRemain                          controllers.HomeController.dvdRemain
+POST        /dvd                                controllers.HomeController.addDVD
+
+GET         /delete/:isbn                       controllers.HomeController.delete(isbn:String)
+
+GET         /borrowNameCheck/:readerName        controllers.HomeController.borrowNameCheck(readerName:String)
+GET         /borrowItemCheck/:isbn              controllers.HomeController.borrowItemCheck(isbn:String)
+POST        /borrow                             controllers.HomeController.borrow
+
+
+GET         /return/:isbn              controllers.HomeController.returnItem(isbn:String)
+
+GET         /registerNameCheck/:fullName              controllers.HomeController.registerNameCheck(fullName:String)
+POST         /register              controllers.HomeController.register
+
+GET         /displayBook            controllers.HomeController.displayBook
+
+GET         /displayDVD            controllers.HomeController.displayDVD
+
+GET         /report            controllers.HomeController.report
+
+GET         /reserve/:isbn                       controllers.HomeController.reserve(isbn:String)

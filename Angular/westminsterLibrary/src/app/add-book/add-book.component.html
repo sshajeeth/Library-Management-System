@@ -1,0 +1,87 @@
+    <marquee class="hint">Welcome to Westminster Library, Add a Book!</marquee>
+    <div class="form-row">
+        <div class="col">
+            <label>ISBN Number</label>
+            <input type="text" pattern="(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$"
+                required class="form-control" #iSBN="ngModel" [class.is-invalid]="iSBN.invalid && iSBN.touched" class="form-control"
+                name="iSBNText" [(ngModel)]="bookDetails.isbn" placeholder="Enter ISBN Number Here">
+            <div *ngIf="iSBN.errors && (iSBN.valid ||  iSBN.touched)">
+                <small class="text-danger" *ngIf="iSBN.errors.required">ISBN Number is Required</small>
+                <small class="text-danger" *ngIf="iSBN.errors.pattern">Invalid ISBN Number</small>
+            </div>
+        </div>
+        <button type="button" [disabled]="iSBN.invalid" class="btn btn-secondary btn-lg" (click)="checkAvailablity()" >Check Book Availablity</button>
+
+    </div>
+
+    <div class="addBookForm">
+        <form #addBook="ngForm" (ngSubmit)="onSubmit()" *ngIf="addBookForm()">
+            <h5 class="space">Space Remaining: {{ bookSpace}}</h5>
+            <div class="form-row">
+                <div class="col">
+                    <label>Title</label>
+                    <input type="text" required class="form-control" #title="ngModel" [class.is-invalid]="title.invalid && title.touched"
+                        name="titleText" [(ngModel)]="bookDetails.title" placeholder="Enter Title Here">
+                    <small class="text-danger" [class.d-none]="title.valid || title.untouched">*Title is Required</small>
+                </div>
+
+                <div class="col">
+                    <label>Publisher</label>
+                    <input type="text" required class="form-control" #publisher="ngModel" [class.is-invalid]="publisher.invalid && publisher.touched"
+                        class="form-control" name="publisherText" [(ngModel)]="bookDetails.publisher" placeholder="Enter Publisher Here">
+                    <small class="text-danger" [class.d-none]="publisher.valid || publisher.untouched">*Publisher is
+                        Required</small>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <label>Published Date</label>
+                    <input type="date" required class="form-control" #date="ngModel" [class.is-invalid]="date.invalid && date.touched"
+                        class="form-control" name="dateText" [(ngModel)]="bookDetails.published_date">
+                    <div *ngIf="date.errors && (date.valid ||  date.touched)">
+                        <small class="text-danger" *ngIf="date.errors.required">*Published Date is Required</small>
+                    </div>
+                </div>
+                <div class="col">
+
+                    <label>No of Pages</label>
+                    <input type="number" required class="form-control" #noOfPages="ngModel" [class.is-invalid]="noOfPages.invalid && noOfPages.touched"
+                        class="form-control" name="noOfPagesText" [(ngModel)]="bookDetails.no_of_pages" placeholder="Enter Total Pages">
+                    <small class="text-danger" [class.d-none]="noOfPages.valid || noOfPages.untouched">*No of Pages
+                        Required</small>
+
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <label>Sector</label>
+                    <select class="form-control" required #sector="ngModel" [class.is-invalid]="sectorHasError && sector.touched"
+                        (blur)="validateSector(sector.value)" (change)="validateSector(sector.value)" name="sectorMenu"
+                        [(ngModel)]="bookDetails.sector">
+                        <option disabled selected value value="defaultSector">Choose a Sector</option>
+                        <option *ngFor="let sector of sectors">{{ sector }} </option>
+                    </select>
+                    <small class="text-danger" [class.d-none]="!sectorHasError ||sector.untouched">*Please Choose
+                        Suitable
+                        Sector
+                    </small>
+                </div>
+                <div class="col">
+                    <label>Author</label>
+                    <input type="text" required class="form-control" #author="ngModel" [class.is-invalid]="author.invalid && author.touched"
+                        class="form-control" name="authorText" [(ngModel)]="bookDetails.author" placeholder="Author1 , Author2..">
+
+                    <small class="text-danger" [class.d-none]="author.valid || author.untouched">*Author is Required</small>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="addBook.form.invalid" class="btn btn-primary">Add
+                Book</button>
+        </form>
+    </div>

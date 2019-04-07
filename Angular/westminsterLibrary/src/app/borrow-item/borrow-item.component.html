@@ -1,0 +1,32 @@
+<marquee class="hint">Welcome to Westminster Library, Borrow a Item!</marquee>
+<div class="fullName">
+
+    <label>Full Name</label>
+    <input type="text" required class="form-control" #fullName="ngModel" [class.is-invalid]="fullName.invalid && fullName.touched"
+        name="fullNameText" [(ngModel)]="borrowDetails.fullName" placeholder="Enter fullName Here">
+    <small class="text-danger" [class.d-none]="fullName.valid || fullName.untouched">*Title is Required</small>
+
+</div>
+
+<button type="button" [disabled]="fullName.invalid" class="btn btn-secondary btn-lg" (click)="checkBorrowName()"
+    data-toggle="modal" data-target="#myModal">Check Availablity</button>
+
+<form #borrowItem="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-row" *ngIf="borrowForm">
+        <div class="col">
+            <label>ISBN Number</label>
+            <input type="text" pattern="(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$"
+                required class="form-control" #isbn="ngModel" [class.is-invalid]="isbn.invalid && isbn.touched" class="form-control"
+                name="isbnText" [(ngModel)]="borrowDetails.isbn" placeholder="Enter ISBN Number Here">
+            <div *ngIf="isbn.errors && (isbn.valid ||  isbn.touched)">
+                <small class="text-danger" *ngIf="isbn.errors.required">ISBN Number is Required</small>
+                <small class="text-danger" *ngIf="isbn.errors.pattern">Invalid ISBN Number</small>
+            </div>
+            <button [disabled]="borrowItem.form.invalid" class="btn btn-primary">Borrow Item</button>
+        </div>
+
+
+    </div>
+
+
+</form>

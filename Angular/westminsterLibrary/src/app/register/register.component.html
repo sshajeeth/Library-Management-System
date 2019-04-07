@@ -1,0 +1,45 @@
+<marquee class="hint">Welcome to Westminster Library, Register your self!</marquee>
+
+<div class="checkName">
+
+    <div class="col">
+        <label>Name</label>
+        <input type="text" required class="form-control" #fullName="ngModel" [class.is-invalid]="fullName.invalid && fullName.touched"
+            class="form-control" name="fullNameText" [(ngModel)]="registerDetails.fullName" placeholder="Enter Full Name Here">
+
+
+        <small class="text-danger" [class.d-none]="fullName.valid || fullName.untouched">*Full Name is Required</small>
+    </div>
+    <button type="button" [disabled]="fullName.invalid" class="btn btn-secondary btn-lg" (click)="checkName()">Check
+        Name</button>
+</div>
+<div class="registerForm" *ngIf="registerForm">
+    <form #register="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-row">
+
+            <div class="col">
+                <label>Mobile Number</label>
+                <input type="text" required class="form-control" #phoneNumber="ngModel" [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched"
+                    class="form-control" name="phoneNumberText" [(ngModel)]="registerDetails.phoneNumber" placeholder="Enter Mobile Number Here">
+
+
+                <small class="text-danger" [class.d-none]="phoneNumber.valid || phoneNumber.untouched">*Mobile Number
+                    is Required</small>
+            </div>
+            <div class="col">
+                <label>Email</label>
+                <input type="email" required class="form-control" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+                    class="form-control" name="emailText" [(ngModel)]="registerDetails.email" placeholder="Enter Email Here">
+
+
+                <small class="text-danger" [class.d-none]="email.valid || email.untouched">*Email is Required</small>
+            </div>
+        </div>
+
+
+        <button [disabled]="register.form.invalid" class="btn btn-primary" type="submit">Register</button>
+
+    </form>
+
+</div>

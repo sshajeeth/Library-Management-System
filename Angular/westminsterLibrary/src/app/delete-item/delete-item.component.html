@@ -1,0 +1,19 @@
+<marquee class="hint">Welcome to Westminster Library, Delete a Item!</marquee>
+<form #deleteItem="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+
+        <div class="col">
+            <label>ISBN Number</label>
+            <input type="text" pattern="(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$"
+                required class="form-control" #iSBN="ngModel" [class.is-invalid]="iSBN.invalid && iSBN.touched" class="form-control"
+                name="iSBNText" [(ngModel)]="deleteDetails.isbn" placeholder="Enter ISBN Number Here">
+            <div *ngIf="iSBN.errors && (iSBN.valid ||  iSBN.touched)">
+                <small class="text-danger" *ngIf="iSBN.errors.required">ISBN Number is Required</small>
+                <small class="text-danger" *ngIf="iSBN.errors.pattern">Invalid ISBN Number</small>
+            </div>
+        </div>
+
+    </div>
+
+    <button [disabled]="deleteItem.form.invalid" class="btn btn-primary" type="submit">Delete Item</button>
+</form>
